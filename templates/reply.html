@@ -1,0 +1,61 @@
+$def with (result)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta name="Content-Type" content="text/html;charset=utf-8">
+   <title>留言版</title>
+  <meta name="Author" content="陈永彦，王二东">
+  <meta name="Keywords" content="留言版">
+  <meta name="Description" content="就是一个简单的留言版实现">
+  <style type="text/css">
+  body{
+	font-size:12px;
+	color:#333;
+	}
+	p{
+	margin:0px;
+	margin-left:20px;
+	width:780px;
+	background-color:#d8d8d8	
+	}	
+	b{
+	color:#f33
+	}
+  </style>
+ </head>
+ 
+ <body>
+	<table width="800" align="center" border="1">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td>标题:<b>$result.title</b></td>
+						</tr>
+						<tr>
+							<td>内容:<p>
+								$result.content
+							</p></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+	</table>
+</td>
+</tr>
+</table>
+<br />
+<table width='800' align="center">
+	<tr>
+		<td>
+			<form action="/reply/" method="POST">
+				<label for="content">回复内容</label>
+				<textarea name="content" id ="content" cols="80"></textarea><br />
+				<input type="hidden" name="id" value="$result.id">
+				<input type="submit" value="回复">
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,187 @@
+$def with(name)
+<!DOCTYPE html PUBdtC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>注册</title>
+<style type="text/css">
+<!--
+body {
+margin: 0px;
+font-size: 14px;
+padding-top: 30px;
+padding-right: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+}
+.b {
+width: 280px;
+margin-right: auto;
+margin-left: auto;
+border: 1px solid #CCCCCC;
+}
+#tit {
+width: 280px;
+margin-right: auto;
+margin-left: auto;
+margin-bottom: -1px;
+position: relative;/* 此处使用相对定位是为让当前选项卡的白色下边线压住内容区的上边线 */
+z-index: 1;
+}
+.main {
+width: 80px;
+text-align: center;
+margin-left: 5px;
+margin-right: 10px;
+float: left;
+border: 1px solid #CCCCCC;
+padding-top: 5px;
+padding-bottom: 3px;
+cursor:pointer;
+}
+.this {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ffffff;
+}
+.b legend {
+font-weight: bold;
+color: #4465a2;
+}
+.b button {
+margin-top: 8px;
+background-color: #4465a2;
+color: #FFFFFF;
+border-top-width: 1px;
+border-right-width: 1px;
+border-bottom-width: 1px;
+border-left-width: 1px;
+border-top-style: double;
+border-right-style: double;
+border-bottom-style: double;
+border-left-style: double;
+line-height: 20px;
+width: 60px;
+height: 24px;
+}
+.b dl {
+padding-left: 15px;
+padding-top: 20px;
+margin: 0px;
+padding-bottom: 20px;
+}
+.b dt span {
+font-size: 12px;
+color: #993300;
+}
+.b dt {
+color: #333333;
+dtne-height: 24px;
+}
+.b dd {
+font-size: 12px;
+margin-bottom: 10px;
+padding-left: 70px;
+margin-left: 0px;
+padding-top: 5px;
+color: #999999;
+width: 168px;
+}
+.b .input {
+border: 1px inset #CCCCCC;
+width: 164px;
+line-height: 22px;
+height: 22px;
+color: #4465a2;
+font-size: 14px;
+font-weight: bold;
+font-family: Verdana, "宋体";
+}
+.b form {
+margin: 0px;
+padding: 0px;
+}
+-->
+</style>
+<script>
+function inputs(){
+   var input = document.getElementsByTagName('input');
+   for(i=0;i<input.length;i++){
+    if (input[i].className=='input'){
+     input[i].onfocus = function(){
+      this.style.border='1px solid #009900';
+     }
+     input[i].onblur = function(){
+      if(this.value==''){
+       this.style.backgroundColor='#F7DBD4';
+       this.style.border='1px inset #CCCCCC';
+       //alert('您还没有输入内容哦');
+      }else{
+       this.style.backgroundColor='#EBF7D4';
+       this.style.border='1px inset #CCCCCC';
+        }
+     }
+    }
+   }
+}
+
+function main(){
+   var target = document.getElementById('tit');
+   var divs = target.getElementsByTagName('div');
+   var forms = document.getElementsByTagName('form');
+   for (i=0;i<divs.length;i++){
+    divs[i].onclick = function () {
+     var names = this.id + 's';
+     for(i=0;i<divs.length;i++){
+      divs[i].className='main';
+     }
+     this.className=this.className + ' this';
+     for(i=0;i<forms.length;i++){
+      forms[i].style.display='none';
+     }
+     document.getElementById(names).style.display='block';
+    }
+   }
+}
+function fun(){
+   inputs();
+   main();
+}
+window.onload = fun ;
+</script>
+</head>
+<body>
+<p>$name</p>>
+<div id="tit">
+<div class="main this" id="login">登录</div>
+<div class="main" id="reg">注册</div>
+<span style="clear:both;display:block;"></span></div>
+<div class="b">
+    <div style="clear:both"><form id="logins" method="post">
+      <dl>
+        <dt>登录帐号：<input name="name" type="text" class="input" id="textfield" />
+        </dt>
+        <dd>请正确输入您的登录名</dd>
+        <dt>登录密码：<input name="passwd" type="password" class="input" id="textfield2" />
+        </dt><dd><a href="#">忘记密码?</a></dd>
+        <dd><button type="submit">登录</button>&nbsp;<button type="reset">重写</button></dd>
+      </dl>
+    </form></div>
+
+
+    <div style="clear:both"><form id="regs" style="display:none" method="post">
+      <dl>
+        <dt>登录帐号：<input name="name" type="text" class="input" id="textfield" />
+        </dt>
+        <dd>最多10个汉字或20个数字或字母</dd>
+        <dt>设置密码：<input name="passwd" type="password" class="input" id="textfield2" />
+        </dt><dd></dd>
+        <dt>电子信箱：<input name="email" type="text" class="input" id="textfield4" /></dt><dd>在您密码丢失时可以帮助您顺利的找回密码，请您提供准确的邮箱地址</dd>
+        <dt>您的性别：<label for="radio">先生</label><input name="sex" type="radio" id="radio" value="man" checked="checked" />
+        &nbsp;<label for="radio2">女士</label><input type="radio" name="sex" id="sex" value="woman" /></dt>
+        <dd><button type="submit">注册</button>&nbsp;<button type="reset">重置</button></dd>
+      </dl>
+      </form></div>
+</div>
+</body>
+</html>

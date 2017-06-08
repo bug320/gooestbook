@@ -1,0 +1,96 @@
+$def with(form)
+
+$code:
+    def Result():
+        keys = []
+        l = len(form["result"])
+        if l == 0:
+            return keys
+        values = []
+        for i  in form["result"].keys():
+            keys.append(i)
+        return keys
+        pass
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理面板</title>
+</head>
+<body>
+
+    <div>
+        <table>
+            <form name="form"  method="post">
+            <tr>
+                <td> 用户ID </td>
+                <td> $:form['id'] </td>
+            </tr>
+            <tr>
+                <td> 用户名 </td>
+                <td> <input  name="name" type="text"  value="$:form['name']" /></td>
+            </tr>
+            <tr>
+                <td> 密码 </td>
+                <td> <input name="passwd" type="text" value="$form['passwd']"> </td>
+            </tr>
+            <tr>
+                <td> 邮件 </td>
+                <td> <input name="email" type="text" value="$form['email']"> </td>
+            </tr>
+            <tr>
+                <td> 性别 </td>
+                <td> <input name="sex" type="text" value="$form['sex']"> </td>
+            </tr >
+            <tr>
+                <td> 筛选 </td>
+                <td>
+                    <select id="menu" name="menu" aria-invalid="select">
+                        <option value="select" >查询</option>
+				        <option value="update" >修改</option>
+				        <option value="delete" >删除</option>
+                        <option value="insert" >插入</option>
+                    </select>
+
+                </td>
+
+            </tr>
+
+                <td>  筛选条件 </td>
+
+                <td>
+                    <label for="radio">按用户名</label><input name="where" type="radio" id="radio" value="name"  checked="checked" />
+
+                    <label for="radio">按性别</label><input name="where" type="radio" id="radio" value="sex" />
+
+                    <label for="radio">按邮箱</label><input name="where" type="radio" id="radio" value="email" />
+                </td>
+            </tr>
+
+            <tr>
+            <td><input type="submit" value="提交"></td>
+            <td><input type="reset"  value="重置" /></td>
+        </tr>
+            </form>
+        </table>
+
+    </div>
+
+    <div>
+        <table>
+
+            $for i in Result():
+                $if i != 'result':
+                    <tr><td>$:i</td><td>$:form[i]</td></tr>
+        </table>
+        <span>
+            <p>
+                 <a href="/">退出</a>
+                 <a href='/root/'> 返回</a>
+             </p>
+
+        </span>
+    </div>
+</body>
+</html>
